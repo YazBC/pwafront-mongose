@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { auth } from "../middleware/auth.js"; // IMPORTANTE: .js al final
-import { list, create, update, remove } from "../controllers/task.controller.js"; // IMPORTANTE: .js al final
+import { auth } from "../middleware/auth.js"; 
+// CORRECCIÓN: Cambiamos bulkSync por bulksync (todo minúsculas) 👇
+import { list, create, update, remove, bulksync } from "../controllers/task.controller.js"; 
 
 const router = Router();
 
@@ -9,7 +10,11 @@ router.use(auth);
 
 router.get('/', list); 
 router.post('/', create); 
-router.put('/:id', update); 
+
+router.post('/bulksync', bulksync); 
+
+// Rutas con ID dinámico
+router.patch('/:id', update); 
 router.delete('/:id', remove); 
 
-export default router;
+export default router; 

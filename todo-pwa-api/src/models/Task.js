@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "./User.js"; // IMPORTANTE: .js al final
+import User from "./User.js"; //
 
 const taskSchema = new mongoose.Schema(
     {
@@ -12,11 +12,31 @@ const taskSchema = new mongoose.Schema(
         description: { type: String, trim: true, default: '' },
         status: {
             type: String,
-            enum: ['Pendiente', 'En progreso', 'Completado'], 
+            // Asegúrate de que estos coincidan con tu Dashboard
+            enum: ['Pendiente', 'En progreso', 'Completada'], 
             default: 'Pendiente',
         },
         clienteId: { type: String },
         deleted: { type: Boolean, default: false },
+        
+        fechaInicio: { 
+            type: Date, 
+            default: null 
+        },
+        fechaVencimiento: { 
+            type: Date, 
+            default: null 
+        },
+        // 👇 ESTO ES LO ÚNICO QUE ESTAMOS AGREGANDO 👇
+        notificadoInicio: { 
+            type: Boolean, 
+            default: false 
+        },
+        notificadoFin: { 
+            type: Boolean, 
+            default: false 
+        }
+        // 👆 HASTA AQUÍ EL AGREGADO 👆
     },
     {
         timestamps: true,
