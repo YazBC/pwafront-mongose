@@ -1,6 +1,5 @@
 :root { font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; }
-/* Corrección: Faltaba el asterisco aquí */
-* { box-sizing: border-box; }
+*{ box-sizing: border-box; }
 body { margin: 0; background: #0b0d10; color: #e7eaee; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 16px; }
 
@@ -16,9 +15,7 @@ body { margin: 0; background: #0b0d10; color: #e7eaee; }
 .add-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
 .add-grid textarea { grid-column: 1 / -1; resize: vertical; min-height: 60px; background-color: #0b0d10; border: 1px solid #2a2f36; color: #e7eaee; padding: 10px 12px; border-radius: 10px; }
 
-/* Corrección: Unifiqué las definiciones de .item */
-.item { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px; background: #0e1217; border: 1px solid #1b2027; padding: 10px 12px; border-radius: 12px; }
-
+.item { grid-template-columns: 28px 1fr auto; }
 .content { display: grid; gap: 6px; }
 .desc { margin: 0; font-size: 13px; color: #aeb6c1; }
 .edit { width: 100%; border: 1px solid #2a2f36; background: #11151a; color: #e7eaee; padding: 8px 10px; border-radius: 8px; }
@@ -32,17 +29,24 @@ body { margin: 0; background: #0b0d10; color: #e7eaee; }
 .chip.active { border-color: #4a81ff; color: #ffffff; }
 
 .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-
+.item { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px;
+        background: #0e1217; border: 1px solid #1b2027; padding: 10px 12px; border-radius: 12px; }
 .item.done .title { text-decoration: line-through; opacity: .6; }
 .check input { width: 18px; height: 18px; }
 .title { user-select: none; }
 .actions { display: flex; gap: 6px; }
 
+.edit { width: 100%; border: 1px solid #2a2f36; background: #11151a; color: #e7eaee; padding: 8px 10px; border-radius: 8px; }
 .empty { opacity: .7; text-align: center; margin-top: 24px; }
 
 @media (max-width: 520px) {
   .stats { display: none; }
 }
+
+/* base existente… */
+:root { font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b0d10; color: #e7eaee; }
 
 /* Auth layout */
 .auth-wrap {
@@ -61,7 +65,11 @@ body { margin: 0; background: #0b0d10; color: #e7eaee; }
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 .brand { text-align: center; margin-bottom: 18px; }
-.logo-img { width: 100px; height: 100px; object-fit: contain; display:block; margin: 0 auto 10px; }
+.logo {
+  width: 52px; height: 52px; margin: 0 auto 10px;
+  display: grid; place-items: center; border-radius: 14px;
+  background: #101826; border: 1px solid #22314a; font-size: 24px;
+}
 .muted { color: #9aa7b2; font-size: 14px; margin-top: 4px; }
 
 .form { display: grid; gap: 10px; margin-top: 12px; }
@@ -90,7 +98,12 @@ body { margin: 0; background: #0b0d10; color: #e7eaee; }
 .link { color: #7aa7ff; text-decoration: none; }
 .link:hover { text-decoration: underline; }
 
-/* Status select styles */
+/* (tu CSS de dashboard puede permanecer igual) */
+.logo-img { width: 100px; height: 100px; object-fit: contain; display:block; margin: 0 auto 10px; }
+
+
+/* select tareas status */
+
 .status-select {
   width: 160px;
   border: 1px solid #2a2f36;
@@ -99,3 +112,9 @@ body { margin: 0; background: #0b0d10; color: #e7eaee; }
   padding: 8px 10px;
   border-radius: 8px;
 }
+.item { grid-template-columns: 180px 1fr auto; } /* espacio para el select */
+
+
+.badge { padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+.status-select { width: 160px; border: 1px solid #2a2f36; background: #11151a; color: #e7eaee; padding: 8px 10px; border-radius: 8px; }
+.item { grid-template-columns: 180px 1fr auto; }

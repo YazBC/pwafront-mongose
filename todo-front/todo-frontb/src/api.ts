@@ -1,7 +1,13 @@
 import axios from "axios";
 
+// Detectamos la IP automáticamente:
+// Si estás en la PC, hostname es "localhost".
+// Si estás en el cel, hostname será tu IP (ej: 192.168.1.50).
+const currentHost = window.location.hostname;
+
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:4000/api",
+    // Asumimos que el backend siempre está en el puerto 4000 de la misma máquina
+    baseURL: import.meta.env.VITE_API_URL || `http://${currentHost}:4000/api`,
 });
 
 export function setAuth(token: string | null) {
